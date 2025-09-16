@@ -45,8 +45,9 @@ const projects = [
       "Secure handling of patient contact details",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2Fd09c85bd144749a783fd06cdf0ff7718?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F25232c2453ff460cbb153ff94c280e5c?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F9beccbded273416ab853c14021eb5f59?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F46b137c5e83748008a0cf5d3a9a95247?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F5c15347365f1402bbcf48a19344df4e9?format=webp&width=1200",
     ],
   },
   {
