@@ -162,9 +162,9 @@ export default function Portfolio() {
                     ))}
                   </List>
 
-                  {(selected.id === 'startup' || selected.id === 'tuition' || selected.id === 'restaurant') && (
+                  {(selected.id === 'startup' || selected.id === 'tuition' || selected.id === 'restaurant' || selected.id === 'clinic') && (
                     <Box sx={{ mt: 2 }}>
-                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : '/portfolio/restaurant')}>Open case study</Button>
+                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : selected.id === 'restaurant' ? '/portfolio/restaurant' : '/portfolio/clinic')}>Open case study</Button>
                     </Box>
                   )}
                 </Box>
