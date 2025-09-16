@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CrmDashboard from "./crm/CrmDashboard";
 import LoopixLanding from "./loopix/LoopixLanding";
+import PortfolioPage from "./loopix/pages/PortfolioPage";
+import ProjectStartupDashboard from "./loopix/pages/ProjectStartupDashboard";
 
 function NotFound() {
   return (
@@ -38,6 +40,8 @@ export default function App() {
         <GlobalErrorListener />
         <Routes>
           <Route path="/" element={<LoopixLanding />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/startup" element={<ProjectStartupDashboard />} />
           <Route path="/crm/*" element={<CrmDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
