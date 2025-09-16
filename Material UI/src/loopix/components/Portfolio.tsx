@@ -61,8 +61,8 @@ const projects = [
       "Branded assets and promotional graphics",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F33d43cb62bfe4931bd6f2eacbfe819a9?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F2eab63a6dffb49979f1dc419e6a0dc2f?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F57aaa145cfc14b58a83087940cb93560?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F3e718162ec674b6b972ef9e301ef4bb5?format=webp&width=1200",
     ],
   },
   {
@@ -107,6 +107,7 @@ export default function Portfolio() {
                     <ListItemButton
                       onClick={() => {
                         if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
+                        if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
                         setSelectedId(p.id);
                       }}
                       selected={p.id === selectedId}
@@ -158,9 +159,9 @@ export default function Portfolio() {
                     ))}
                   </List>
 
-                  {selected.id === 'startup' && (
+                  {(selected.id === 'startup' || selected.id === 'tuition') && (
                     <Box sx={{ mt: 2 }}>
-                      <Button variant="contained" onClick={() => navigate('/portfolio/startup')}>Open case study</Button>
+                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : '/portfolio/tuition')}>Open case study</Button>
                     </Box>
                   )}
                 </Box>
@@ -196,8 +197,12 @@ export default function Portfolio() {
                   <Typography variant="h6" sx={{ fontWeight: 800, mb: 2 }}>More Projects</Typography>
                   <Grid container spacing={2}>
                     {projects.map((p) => (
-                      <Grid item xs={12} sm={6} md={4} key={`more-${p.id}`}>
-                        <Paper elevation={0} className="glass-card" sx={{ p: 2, cursor: 'pointer' }} onClick={() => setSelectedId(p.id)}>
+                      <Grid item xs={12} sm={6} md={6} key={`more-${p.id}`}>
+                        <Paper elevation={0} className="glass-card" sx={{ p: 2, cursor: 'pointer' }} onClick={() => {
+                          if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
+                          if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
+                          setSelectedId(p.id);
+                        }}>
                           <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8 }} />
                           <Typography sx={{ fontWeight: 700, mt: 1 }}>{p.title}</Typography>
                           <Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>
