@@ -85,6 +85,7 @@ export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
   const [expanded, setExpanded] = React.useState(false);
   const selected = projects.find((p) => p.id === selectedId) || projects[0];
+  const navigate = require("react-router-dom").useNavigate();
 
   return (
     <Box component="section" id="portfolio" sx={{ py: { xs: 6, md: 10 } }}>
@@ -102,7 +103,10 @@ export default function Portfolio() {
                 {projects.map((p) => (
                   <ListItem key={p.id} disablePadding sx={{ alignItems: 'flex-start', gap: 2 }}>
                     <ListItemButton
-                      onClick={() => setSelectedId(p.id)}
+                      onClick={() => {
+                        if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
+                        setSelectedId(p.id);
+                      }}
                       selected={p.id === selectedId}
                       sx={{ alignItems: 'flex-start', gap: 2 }}
                     >
@@ -151,6 +155,12 @@ export default function Portfolio() {
                       </ListItem>
                     ))}
                   </List>
+
+                  {selected.id === 'startup' && (
+                    <Box sx={{ mt: 2 }}>
+                      <Button variant="contained" onClick={() => navigate('/portfolio/startup')}>Open case study</Button>
+                    </Box>
+                  )}
                 </Box>
 
                 <Box>
