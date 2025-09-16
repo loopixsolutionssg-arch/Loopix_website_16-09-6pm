@@ -211,6 +211,7 @@ export default function Portfolio() {
                           if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
                           if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
                           if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
+                          if (p.id === 'clinic') { navigate('/portfolio/clinic'); return; }
                           setSelectedId(p.id);
                         }}>
                           <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8 }} />
