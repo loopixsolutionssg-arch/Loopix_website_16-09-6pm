@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
 import Header from "../components/Header";
 import Portfolio from "../components/Portfolio";
 import Footer from "../components/Footer";
