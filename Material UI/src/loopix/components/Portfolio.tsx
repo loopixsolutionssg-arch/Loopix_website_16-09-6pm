@@ -108,6 +108,7 @@ export default function Portfolio() {
                       onClick={() => {
                         if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
                         if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
+                        if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
                         setSelectedId(p.id);
                       }}
                       selected={p.id === selectedId}
@@ -159,9 +160,9 @@ export default function Portfolio() {
                     ))}
                   </List>
 
-                  {(selected.id === 'startup' || selected.id === 'tuition') && (
+                  {(selected.id === 'startup' || selected.id === 'tuition' || selected.id === 'restaurant') && (
                     <Box sx={{ mt: 2 }}>
-                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : '/portfolio/tuition')}>Open case study</Button>
+                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : '/portfolio/restaurant')}>Open case study</Button>
                     </Box>
                   )}
                 </Box>
@@ -181,7 +182,12 @@ export default function Portfolio() {
                     <Grid container spacing={1}>
                       {projects.filter((p) => p.id !== selected.id).map((p) => (
                         <Grid item xs={6} key={`rel-${p.id}`}>
-                          <Paper elevation={0} className="glass-card" sx={{ p: 1, cursor: 'pointer' }} onClick={() => setSelectedId(p.id)}>
+                          <Paper elevation={0} className="glass-card" sx={{ p: 1, cursor: 'pointer' }} onClick={() => {
+                            if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
+                            if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
+                            if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
+                            setSelectedId(p.id);
+                          }}>
                             <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 80, objectFit: 'cover', borderRadius: 6 }} />
                             <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>{p.title}</Typography>
                           </Paper>
@@ -201,6 +207,7 @@ export default function Portfolio() {
                         <Paper elevation={0} className="glass-card" sx={{ p: 2, cursor: 'pointer' }} onClick={() => {
                           if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
                           if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
+                          if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
                           setSelectedId(p.id);
                         }}>
                           <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8 }} />
