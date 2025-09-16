@@ -29,8 +29,8 @@ const projects = [
       "Power App for order management on tablets",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2Fd8e016ded22147f7a9832fa7cd28b034?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F4199e4c575dc4ba2a9367709b09fa5ec?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F7b18c1feddeb436aa76de4c77570234e?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F4f6f3b04130f46e6b0da66405fc2eb67?format=webp&width=1200",
     ],
   },
   {
