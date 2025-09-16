@@ -87,7 +87,7 @@ export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
   const [expanded, setExpanded] = React.useState(false);
   const selected = projects.find((p) => p.id === selectedId) || projects[0];
-  const navigate = require("react-router-dom").useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Box component="section" id="portfolio" sx={{ py: { xs: 6, md: 10 } }}>
