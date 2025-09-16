@@ -26,9 +26,7 @@ export default function PortfolioPage(){
       <CssBaseline />
       <Header />
       <main>
-        <Container maxWidth="lg" sx={{ pt: { xs: 4, md: 6 } }}>
-          <Portfolio />
-        </Container>
+        <Portfolio />
       </main>
       <Footer />
     </ThemeProvider>
