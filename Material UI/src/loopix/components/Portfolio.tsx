@@ -110,6 +110,7 @@ export default function Portfolio() {
                         if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
                         if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
                         if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
+                        if (p.id === 'clinic') { navigate('/portfolio/clinic'); return; }
                         setSelectedId(p.id);
                       }}
                       selected={p.id === selectedId}
