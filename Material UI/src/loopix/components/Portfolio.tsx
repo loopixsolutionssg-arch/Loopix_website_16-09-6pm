@@ -102,29 +102,31 @@ export default function Portfolio() {
               <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
                 Projects
               </Typography>
-              <List sx={{ overflowY: { md: 'auto' }, maxHeight: { md: 480 } }}>
-                {projects.map((p) => (
-                  <ListItem key={p.id} disablePadding sx={{ alignItems: 'flex-start', gap: 2 }}>
-                    <ListItemButton
-                      onClick={() => {
-                        if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
-                        if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
-                        if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
-                        if (p.id === 'clinic') { navigate('/portfolio/clinic'); return; }
-                        setSelectedId(p.id);
-                      }}
-                      selected={p.id === selectedId}
-                      sx={{ alignItems: 'flex-start', gap: 2 }}
-                    >
-                      <Avatar variant="rounded" src={p.images[0]} alt={p.title} sx={{ width: 64, height: 64 }} imgProps={{ onError:(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2764%27 height=%2764%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%23e6f7fb%27 rx=%279%27/%3E%3Ctext x=%2732%27 y=%2738%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23008aa0%27 font-family=%27Inter,Arial,sans-serif%27%3EImg%3C/text%3E%3C/svg%3E' } , crossOrigin: 'anonymous'}} />
-                      <ListItemText
-                        primary={<Typography sx={{ fontWeight: 700 }}>{p.title}</Typography>}
-                        secondary={<Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
+              <Box sx={{ overflowY: { md: 'auto' }, maxHeight: { md: 480 } }}>
+                <Grid container spacing={1}>
+                  {projects.map((p) => (
+                    <Grid item xs={12} sm={6} key={p.id}>
+                      <ListItemButton
+                        onClick={() => {
+                          if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
+                          if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
+                          if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
+                          if (p.id === 'clinic') { navigate('/portfolio/clinic'); return; }
+                          setSelectedId(p.id);
+                        }}
+                        selected={p.id === selectedId}
+                        sx={{ alignItems: 'flex-start', gap: 2, borderRadius: 1 }}
+                      >
+                        <Avatar variant="rounded" src={p.images[0]} alt={p.title} sx={{ width: 64, height: 64 }} imgProps={{ onError:(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2764%27 height=%2764%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%23e6f7fb%27 rx=%279%27/%3E%3Ctext x=%2732%27 y=%2738%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23008aa0%27 font-family=%27Inter,Arial,sans-serif%27%3EImg%3C/text%3E%3C/svg%3E' } , crossOrigin: 'anonymous'}} />
+                        <ListItemText
+                          primary={<Typography sx={{ fontWeight: 700 }}>{p.title}</Typography>}
+                          secondary={<Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>}
+                        />
+                      </ListItemButton>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
             </Paper>
           </Grid>
 
