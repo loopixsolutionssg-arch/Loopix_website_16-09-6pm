@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <Box component="section" sx={{ bgcolor: (theme) => alpha(theme.palette.primary.main, 0.06), py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
-        <Stack direction={{ xs: "column", md: "row" }} spacing={4} alignItems={{ xs: "center", md: "flex-start" }} justifyContent="space-between">
+        <Stack direction="row" spacing={4} alignItems="flex-start" justifyContent="space-between">
           <Box sx={{ flex: 1 }}>
             <Typography component="h1" variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
               Simplifying IT for Small Business Growth
