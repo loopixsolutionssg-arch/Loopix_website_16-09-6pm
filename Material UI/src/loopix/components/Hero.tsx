@@ -32,7 +32,7 @@ export default function Hero() {
               </Button>
             </Stack>
           </Box>
-          <Box sx={{ flex: 1, width: "100%", maxWidth: 520, mx: "auto" }}>
+          <Box sx={{ flex: 1, width: "100%", maxWidth: 520, mx: "auto", alignSelf: { md: "flex-start" } }}>
             <Box className="glass-hero" sx={{ aspectRatio: "4 / 3", width: "100%", borderRadius: 3, p: 2 }}>
               <SmartImage src={HERO_IMG} alt="Loopix hero" style={{ width: '100%', height: '100%', borderRadius: 12, objectFit: 'cover' }} />
             </Box>
