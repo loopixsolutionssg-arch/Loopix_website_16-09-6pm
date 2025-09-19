@@ -22,13 +22,14 @@
     "@react-spring/web": "^10.0.0",
     "@tailwindcss/vite": "latest",
     "dayjs": "^1.11.13",
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^7.6.0",
-    "tailwindcss": "latest",
-    "next": "latest"
+    "tailwindcss": "latest"
   },
   "devDependencies": {
+    "@types/node": "^24.5.2",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
