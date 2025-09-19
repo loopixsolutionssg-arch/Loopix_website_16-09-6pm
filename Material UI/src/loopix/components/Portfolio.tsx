@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const projects = [
@@ -86,7 +86,7 @@ const projects = [
 export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
   const selected = projects.find((p) => p.id === selectedId) || projects[0];
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <Box component="section" id="portfolio" sx={{ py: { xs: 6, md: 10 } }}>
@@ -106,10 +106,10 @@ export default function Portfolio() {
                     <Grid item xs={12} sm={6} key={p.id}>
                       <ListItemButton
                         onClick={() => {
-                          if (p.id === 'startup') { navigate('/portfolio/startup'); return; }
-                          if (p.id === 'tuition') { navigate('/portfolio/tuition'); return; }
-                          if (p.id === 'restaurant') { navigate('/portfolio/restaurant'); return; }
-                          if (p.id === 'clinic') { navigate('/portfolio/clinic'); return; }
+                          if (p.id === 'startup') { router.push('/portfolio/startup'); return; }
+                          if (p.id === 'tuition') { router.push('/portfolio/tuition'); return; }
+                          if (p.id === 'restaurant') { router.push('/portfolio/restaurant'); return; }
+                          if (p.id === 'clinic') { router.push('/portfolio/clinic'); return; }
                           setSelectedId(p.id);
                         }}
                         selected={p.id === selectedId}
@@ -161,7 +161,7 @@ export default function Portfolio() {
 
                   {(selected.id === 'startup' || selected.id === 'tuition' || selected.id === 'restaurant' || selected.id === 'clinic') && (
                     <Box sx={{ mt: 2 }}>
-                      <Button variant="contained" onClick={() => navigate(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : selected.id === 'restaurant' ? '/portfolio/restaurant' : '/portfolio/clinic')}>Open case study</Button>
+                      <Button variant="contained" onClick={() => router.push(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : selected.id === 'restaurant' ? '/portfolio/restaurant' : '/portfolio/clinic')}>Open case study</Button>
                     </Box>
                   )}
                 </Box>
