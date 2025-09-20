@@ -1,5 +1,5 @@
-"use client";
-import ProjectTuitionCentre from "../../../src/loopix/pages/ProjectTuitionCentre";
+import dynamic from "next/dynamic";
+const ProjectTuitionCentre = dynamic(() => import("../../../src/loopix/pages/ProjectTuitionCentre"), { ssr: false });
 
 export default function TuitionCaseStudyPage() {
   return <ProjectTuitionCentre />;
