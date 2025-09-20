@@ -1,4 +1,5 @@
 import * as React from "react";
+"use client";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -83,7 +84,6 @@ const projects = [
   },
 ];
 
-"use client";
 
 export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
