@@ -1,3 +1,4 @@
+"use client";
 import dynamic from "next/dynamic";
 const ProjectStartupDashboard = dynamic(() => import("../../../src/loopix/pages/ProjectStartupDashboard"), { ssr: false });
 
