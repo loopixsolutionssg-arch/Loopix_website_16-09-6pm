@@ -1,5 +1,5 @@
-"use client";
-import LoopixLanding from "../src/loopix/LoopixLanding";
+import dynamic from "next/dynamic";
+const LoopixLanding = dynamic(() => import("../src/loopix/LoopixLanding"), { ssr: false });
 
 export default function Page() {
   return <LoopixLanding />;
