@@ -1,5 +1,5 @@
-import * as React from "react";
 "use client";
+import * as React from "react";
 import { usePathname } from "next/navigation";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
