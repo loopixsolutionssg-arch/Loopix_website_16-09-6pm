@@ -1,5 +1,5 @@
-"use client";
-import ProjectStartupDashboard from "../../../src/loopix/pages/ProjectStartupDashboard";
+import dynamic from "next/dynamic";
+const ProjectStartupDashboard = dynamic(() => import("../../../src/loopix/pages/ProjectStartupDashboard"), { ssr: false });
 
 export default function StartupCaseStudyPage() {
   return <ProjectStartupDashboard />;
