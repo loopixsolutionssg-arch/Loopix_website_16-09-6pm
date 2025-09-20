@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -11,8 +12,9 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import { useRouter } from "next/navigation";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 
 const projects = [
   {
@@ -27,8 +29,8 @@ const projects = [
       "Power App for order management on tablets",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2Fd8e016ded22147f7a9832fa7cd28b034?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F4199e4c575dc4ba2a9367709b09fa5ec?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F7b18c1feddeb436aa76de4c77570234e?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F4f6f3b04130f46e6b0da66405fc2eb67?format=webp&width=1200",
     ],
   },
   {
@@ -43,8 +45,9 @@ const projects = [
       "Secure handling of patient contact details",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2Fd09c85bd144749a783fd06cdf0ff7718?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F25232c2453ff460cbb153ff94c280e5c?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F9beccbded273416ab853c14021eb5f59?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F46b137c5e83748008a0cf5d3a9a95247?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F5c15347365f1402bbcf48a19344df4e9?format=webp&width=1200",
     ],
   },
   {
@@ -59,8 +62,8 @@ const projects = [
       "Branded assets and promotional graphics",
     ],
     images: [
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F33d43cb62bfe4931bd6f2eacbfe819a9?format=webp&width=1200",
-      "https://cdn.builder.io/api/v1/image/assets%2Ff412044fdee74b4da312f40781fe7702%2F2eab63a6dffb49979f1dc419e6a0dc2f?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F57aaa145cfc14b58a83087940cb93560?format=webp&width=1200",
+      "https://cdn.builder.io/api/v1/image/assets%2F9b19483106164207ba327f341e21ca6b%2F3e718162ec674b6b972ef9e301ef4bb5?format=webp&width=1200",
     ],
   },
   {
@@ -81,10 +84,11 @@ const projects = [
   },
 ];
 
+
 export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
-  const [expanded, setExpanded] = React.useState(false);
   const selected = projects.find((p) => p.id === selectedId) || projects[0];
+  const router = useRouter();
 
   return (
     <Box component="section" id="portfolio" sx={{ py: { xs: 6, md: 10 } }}>
@@ -98,23 +102,31 @@ export default function Portfolio() {
               <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
                 Projects
               </Typography>
-              <List sx={{ overflowY: { md: 'auto' }, maxHeight: { md: 480 } }}>
-                {projects.map((p) => (
-                  <ListItem key={p.id} disablePadding sx={{ alignItems: 'flex-start', gap: 2 }}>
-                    <ListItemButton
-                      onClick={() => setSelectedId(p.id)}
-                      selected={p.id === selectedId}
-                      sx={{ alignItems: 'flex-start', gap: 2 }}
-                    >
-                      <Avatar variant="rounded" src={p.images[0]} alt={p.title} sx={{ width: 64, height: 64 }} imgProps={{ onError:(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2764%27 height=%2764%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%23e6f7fb%27 rx=%279%27/%3E%3Ctext x=%2732%27 y=%2738%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23008aa0%27 font-family=%27Inter,Arial,sans-serif%27%3EImg%3C/text%3E%3C/svg%3E' } , crossOrigin: 'anonymous'}} />
-                      <ListItemText
-                        primary={<Typography sx={{ fontWeight: 700 }}>{p.title}</Typography>}
-                        secondary={<Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
+              <Box sx={{ overflowY: { md: 'auto' }, maxHeight: { md: 480 } }}>
+                <Grid container spacing={1}>
+                  {projects.map((p) => (
+                    <Grid item xs={12} sm={6} key={p.id}>
+                      <ListItemButton
+                        onClick={() => {
+                          if (p.id === 'startup') { router.push('/portfolio/startup'); return; }
+                          if (p.id === 'tuition') { router.push('/portfolio/tuition'); return; }
+                          if (p.id === 'restaurant') { router.push('/portfolio/restaurant'); return; }
+                          if (p.id === 'clinic') { router.push('/portfolio/clinic'); return; }
+                          setSelectedId(p.id);
+                        }}
+                        selected={p.id === selectedId}
+                        sx={{ alignItems: 'flex-start', gap: 2, borderRadius: 1 }}
+                      >
+                        <Avatar variant="rounded" src={p.images[0]} alt={p.title} sx={{ width: 64, height: 64 }} imgProps={{ onError:(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2764%27 height=%2764%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%23e6f7fb%27 rx=%279%27/%3E%3Ctext x=%2732%27 y=%2738%27 text-anchor=%27middle%27 font-size=%2710%27 fill=%27%23008aa0%27 font-family=%27Inter,Arial,sans-serif%27%3EImg%3C/text%3E%3C/svg%3E' } , crossOrigin: 'anonymous'}} />
+                        <ListItemText
+                          primary={<Typography sx={{ fontWeight: 700 }}>{p.title}</Typography>}
+                          secondary={<Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>}
+                        />
+                      </ListItemButton>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
             </Paper>
           </Grid>
 
@@ -126,16 +138,13 @@ export default function Portfolio() {
                   <Typography variant="subtitle2" color="text.secondary">{selected.subtitle}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', gap: 1 }}>
-                  <IconButton size="small" onClick={() => setExpanded((s) => !s)} aria-label="expand">
-                    <OpenInFullIcon />
-                  </IconButton>
                   <IconButton size="small" onClick={() => setSelectedId(projects[0].id)} aria-label="back">
                     <ArrowBackIosNewIcon />
                   </IconButton>
                 </Box>
               </Box>
 
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 320px' }, gap: 2 }}>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr' }, gap: 2 }}>
                 <Box>
                   <Box sx={{ mb: 2 }}>
                     <img src={selected.images[0]} alt={selected.title} style={{ width: '100%', borderRadius: 12, objectFit: 'cover', maxHeight: 420 }} onError={(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27420%27%3E%3Crect width=%27800%27 height=%27420%27 fill=%27%23f3f4f6%27/%3E%3Ctext x=%27400%27 y=%27210%27 text-anchor=%27middle%27 font-size=%2724%27 fill=%27%23888%27 font-family=%27Inter,Arial,sans-serif%27%3EImage+not+available%3C/text%3E%3C/svg%3E' }} />
@@ -151,50 +160,14 @@ export default function Portfolio() {
                       </ListItem>
                     ))}
                   </List>
-                </Box>
 
-                <Box>
-                  <Typography sx={{ fontWeight: 700, mb: 1 }}>Gallery</Typography>
-                  <Grid container spacing={1}>
-                    {selected.images.map((src, i) => (
-                      <Grid item xs={6} key={src}>
-                        <img src={src} alt={`${selected.title} ${i + 1}`} style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 8 }} onError={(e:any)=>{ e.currentTarget.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%27120%27%3E%3Crect width=%27120%27 height=%27120%27 fill=%27%23f3f4f6%27/%3E%3C/text%3E%3C/svg%3E' }} />
-                      </Grid>
-                    ))}
-                  </Grid>
-
-                  <Box sx={{ mt: 3 }}>
-                    <Typography sx={{ fontWeight: 700, mb: 1 }}>Related Projects</Typography>
-                    <Grid container spacing={1}>
-                      {projects.filter((p) => p.id !== selected.id).map((p) => (
-                        <Grid item xs={6} key={`rel-${p.id}`}>
-                          <Paper elevation={0} className="glass-card" sx={{ p: 1, cursor: 'pointer' }} onClick={() => setSelectedId(p.id)}>
-                            <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 80, objectFit: 'cover', borderRadius: 6 }} />
-                            <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>{p.title}</Typography>
-                          </Paper>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
+                  {(selected.id === 'startup' || selected.id === 'tuition' || selected.id === 'restaurant' || selected.id === 'clinic') && (
+                    <Box sx={{ mt: 2 }}>
+                      <Button variant="contained" onClick={() => router.push(selected.id === 'startup' ? '/portfolio/startup' : selected.id === 'tuition' ? '/portfolio/tuition' : selected.id === 'restaurant' ? '/portfolio/restaurant' : '/portfolio/clinic')}>Open case study</Button>
+                    </Box>
+                  )}
                 </Box>
               </Box>
-
-              {expanded && (
-                <Box sx={{ mt: 3 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 2 }}>More Projects</Typography>
-                  <Grid container spacing={2}>
-                    {projects.map((p) => (
-                      <Grid item xs={12} sm={6} md={4} key={`more-${p.id}`}>
-                        <Paper elevation={0} className="glass-card" sx={{ p: 2, cursor: 'pointer' }} onClick={() => setSelectedId(p.id)}>
-                          <img src={p.images[0]} alt={p.title} style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8 }} />
-                          <Typography sx={{ fontWeight: 700, mt: 1 }}>{p.title}</Typography>
-                          <Typography variant="caption" color="text.secondary">{p.subtitle}</Typography>
-                        </Paper>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Box>
-              )}
             </Paper>
           </Grid>
         </Grid>

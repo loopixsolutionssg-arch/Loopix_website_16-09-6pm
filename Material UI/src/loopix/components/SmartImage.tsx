@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 const FALLBACK_SVG = `data:image/svg+xml;utf8,${encodeURIComponent(`

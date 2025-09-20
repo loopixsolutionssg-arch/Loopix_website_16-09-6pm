@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <Box component="section" sx={{ bgcolor: (theme) => alpha(theme.palette.primary.main, 0.06), py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
-        <Stack direction={{ xs: "column", md: "row" }} spacing={4} alignItems="center" justifyContent="space-between">
+        <Stack direction="row" spacing={4} alignItems="flex-start" justifyContent="space-between">
           <Box sx={{ flex: 1 }}>
             <Typography component="h1" variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
               Simplifying IT for Small Business Growth
@@ -32,7 +32,7 @@ export default function Hero() {
               </Button>
             </Stack>
           </Box>
-          <Box sx={{ flex: 1, width: "100%", maxWidth: 520, mx: "auto" }}>
+          <Box sx={{ flex: 1, width: "100%", maxWidth: 520, mx: "auto", alignSelf: { md: "flex-start" } }}>
             <Box className="glass-hero" sx={{ aspectRatio: "4 / 3", width: "100%", borderRadius: 3, p: 2 }}>
               <SmartImage src={HERO_IMG} alt="Loopix hero" style={{ width: '100%', height: '100%', borderRadius: 12, objectFit: 'cover' }} />
             </Box>
