@@ -83,6 +83,8 @@ const projects = [
   },
 ];
 
+"use client";
+
 export default function Portfolio() {
   const [selectedId, setSelectedId] = React.useState(projects[0].id);
   const selected = projects.find((p) => p.id === selectedId) || projects[0];
