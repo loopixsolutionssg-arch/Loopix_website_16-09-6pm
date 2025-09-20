@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useLocation, Link as RouterLink } from "react-router-dom";
+"use client";
+import { usePathname } from "next/navigation";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
@@ -11,8 +12,8 @@ function capitalizeFirstLetter(string: string) {
 }
 
 export default function CrmNavbarBreadcrumbs() {
-  const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  const pathname = usePathname() || "/";
+  const pathnames = pathname.split("/").filter((x) => x);
 
   return (
     <Breadcrumbs
@@ -21,10 +22,9 @@ export default function CrmNavbarBreadcrumbs() {
       sx={{ mb: 1 }}
     >
       <Link
-        component={RouterLink}
+        href="/"
         underline="hover"
         color="inherit"
-        to="/"
         sx={{ display: "flex", alignItems: "center" }}
       >
         <HomeRoundedIcon sx={{ mr: 0.5 }} fontSize="small" />
@@ -40,10 +40,9 @@ export default function CrmNavbarBreadcrumbs() {
           </Typography>
         ) : (
           <Link
-            component={RouterLink}
+            href={to}
             underline="hover"
             color="inherit"
-            to={to}
             key={to}
           >
             {capitalizeFirstLetter(value)}
