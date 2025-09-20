@@ -14,7 +14,6 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Link as RouterLink } from "react-router-dom";
 
 const theme = createTheme({
   typography: { fontFamily: ["Inter", "Roboto", "Helvetica", "Arial", "sans-serif"].join(", ") },
@@ -43,7 +42,7 @@ export default function ProjectTuitionCentre(){
       <main>
         <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 3 }}>
-            <Button component={RouterLink} to="/portfolio" startIcon={<ArrowBackIcon />} variant="outlined">
+            <Button component="a" href="/portfolio" startIcon={<ArrowBackIcon />} variant="outlined">
               Back to Portfolio
             </Button>
           </Box>
@@ -110,7 +109,7 @@ export default function ProjectTuitionCentre(){
                   <ListItem><ListItemText primary="Better visibility into enrolment trends" /></ListItem>
                 </List>
                 <Box sx={{ mt: 2 }}>
-                  <Button component={RouterLink} to="/" variant="contained">Discuss your education site</Button>
+                  <Button component="a" href="/" variant="contained">Discuss your education site</Button>
                 </Box>
               </Paper>
             </Grid>
