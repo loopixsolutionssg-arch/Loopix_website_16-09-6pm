@@ -2,6 +2,8 @@ import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
+"use client";
+
 export default function GlobalErrorListener() {
   const [message, setMessage] = React.useState<string | null>(null);
 
